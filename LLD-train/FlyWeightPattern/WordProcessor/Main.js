@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var ILetterFactory_1 = require("./ILetterFactory");
+var charOne = ILetterFactory_1.default.createLetter("a");
+charOne.display(1, 1);
+var charTwo = ILetterFactory_1.default.createLetter("a");
+charTwo.display(1, 2);
+var charThree = ILetterFactory_1.default.createLetter("b");
+charThree.display(1, 3);
+var charFour = ILetterFactory_1.default.createLetter("b");
+charFour.display(1, 4);

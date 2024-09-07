@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var turnAcOff_1 = require("./Commands/turnAcOff");
+var turnAcOn_1 = require("./Commands/turnAcOn");
+var IncreaseTemperature_1 = require("./Commands/IncreaseTemperature");
+var DecreaseTemperature_1 = require("./Commands/DecreaseTemperature");
+var Receiver_1 = require("./Receiver");
+var Invoker_1 = require("./Invoker");
+var airCOnditioner = new Receiver_1.default();
+var remoteControl = new Invoker_1.default();
+remoteControl.setCommand(new turnAcOn_1.default(airCOnditioner));
+remoteControl.pressButton();
+remoteControl.setCommand(new IncreaseTemperature_1.default(airCOnditioner));
+remoteControl.pressButton();
+remoteControl.setCommand(new DecreaseTemperature_1.default(airCOnditioner));
+remoteControl.pressButton();
+remoteControl.setCommand(new turnAcOff_1.default(airCOnditioner));
+remoteControl.pressButton();

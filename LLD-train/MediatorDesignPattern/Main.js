@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Bidder_1 = require("./Bidder");
+var Auction_1 = require("./Auction");
+var auction = new Auction_1.default();
+var bidder1 = new Bidder_1.default("Bidder1", auction);
+var bidder2 = new Bidder_1.default("Bidder2", auction);
+var bidder3 = new Bidder_1.default("Bidder3", auction);
+auction.addColleague(bidder1);
+auction.addColleague(bidder2);
+auction.addColleague(bidder3);
+bidder1.placeBid(100);
+bidder2.placeBid(200);
+bidder3.placeBid(300);

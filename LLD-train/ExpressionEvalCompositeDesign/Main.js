@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Number_1 = require("./Models/Number");
+var Expression_1 = require("./Models/Expression");
+var number1 = new Number_1.default(10);
+var number2 = new Number_1.default(5);
+var number3 = new Number_1.default(2);
+var number4 = new Number_1.default(3);
+var expression1 = new Expression_1.default(number1, number2, "+" /* Operator.ADDITION */);
+console.log("".concat("\u001B[36m" /* Color.fgCyan */) + "Expression 1 : Adding 10 and 5 = " + expression1.evaluate());
+var expression2 = new Expression_1.default(expression1, number3, "*" /* Operator.MULTIPLICATION */);
+console.log("".concat("\u001B[36m" /* Color.fgCyan */) + "Expression 2 : Multiplying 15 and 2 = " + expression2.evaluate());
+var expression3 = new Expression_1.default(expression2, number4, "/" /* Operator.DIVISION */);
+console.log("".concat("\u001B[36m" /* Color.fgCyan */) + "Expression 3 : Dividing 30 and 3 = " + expression3.evaluate());

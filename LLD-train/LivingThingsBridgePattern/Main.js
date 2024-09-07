@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Tree_1 = require("./Tree");
+var TreeBreatheImplementor_1 = require("./TreeBreatheImplementor");
+var Dog_1 = require("./Dog");
+var LandBreatheImplementor_1 = require("./LandBreatheImplementor");
+var Fish_1 = require("./Fish");
+var WaterBreatheImplementor_1 = require("./WaterBreatheImplementor");
+var tree = new Tree_1.default(new TreeBreatheImplementor_1.default());
+tree.breatheProcess();
+var dog = new Dog_1.default(new LandBreatheImplementor_1.default());
+dog.breatheProcess();
+var fish = new Fish_1.default(new WaterBreatheImplementor_1.default());
+fish.breatheProcess();

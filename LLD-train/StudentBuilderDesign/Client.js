@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Director_1 = require("./Director");
+var MBAStudentBuilder_1 = require("./MBAStudentBuilder");
+var EngineeringStudentBuilder_1 = require("./EngineeringStudentBuilder");
+var MedialStudentBuilder_1 = require("./MedialStudentBuilder");
+var MBADirector = new Director_1.default(new MBAStudentBuilder_1.default());
+var engineeringDirector = new Director_1.default(new EngineeringStudentBuilder_1.default());
+var medicalDirector = new Director_1.default(new MedialStudentBuilder_1.default());
+var mbaStudent = MBADirector.createStudent();
+var engineeringStudent = engineeringDirector.createStudent();
+var medicalStudent = medicalDirector.createStudent();
+console.log("\u001B[96m" /* Color.fgBrightCyan */, mbaStudent.getStudentDetails());
+console.log("\u001B[95m" /* Color.fgBrightMagenta */, engineeringStudent.getStudentDetails());
+console.log("\u001B[92m" /* Color.fgBrightGreen */, medicalStudent.getStudentDetails());

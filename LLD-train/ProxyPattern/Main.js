@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var DatabaseProxy_1 = require("./DatabaseProxy");
+var dbProxy = new DatabaseProxy_1.default();
+dbProxy.getEntry('admin', { id: '1', name: 'John Doe' });
+dbProxy.getEntry('user', { id: '1', name: 'John Doe' });
+dbProxy.createEntry('admin', { id: '1', name: 'John Doe' });
+dbProxy.createEntry('user', { id: '1', name: 'John Doe' });
+dbProxy.deleteEntry('admin', '1');
+dbProxy.deleteEntry('user', '1');

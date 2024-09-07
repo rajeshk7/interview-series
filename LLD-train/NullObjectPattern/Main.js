@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var MusicFactory_1 = require("./MusicFactory");
+var musicFactory = new MusicFactory_1.default();
+var electricGuitar = musicFactory.getInstrumentObject('ElectricGuitar');
+electricGuitar.getIsClassicalInstrument();
+electricGuitar.getCanPlayWithoutElectricity();
+console.log('-------------------');
+var harmonium = musicFactory.getInstrumentObject('Harmonium');
+harmonium.getIsClassicalInstrument();
+harmonium.getCanPlayWithoutElectricity();
+console.log('-------------------');
+var nullObject = musicFactory.getInstrumentObject('Violin');
+nullObject.getIsClassicalInstrument();
+nullObject.getCanPlayWithoutElectricity();

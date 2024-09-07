@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["es2015", "dom"],
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist"
+    },
+    "include": ["./TicTacToeGame/*/*"], // Add the input file(s) here,
+    "files": ["./main.ts", "./TicTacToeGame.ts"] // Add the input file(s) here
+}
