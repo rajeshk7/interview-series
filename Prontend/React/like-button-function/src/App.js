@@ -1,23 +1,56 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
+import { SpinnerIcon, HeartIcon } from './Icons/icons';
 
 function App() {
+  const [liked, setLiked] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchData = async (liked) => {
+
+    setIsFetching(true);
+    setError(null);
+
+    try{
+      const fetchData = await fetch(
+        "https://www.greatfrontend.com/api/questions/like-button",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            action: liked ? "unlike" : "like",
+          })
+        }
+      );
+
+      if(fetchData.status === 200){
+        console.log("Success!");
+        setLiked(!liked);
+      } 
+      else {
+        const res = await fetchData.json();
+        setError(res.message);
+      }
+      
+    }
+    finally{
+      setIsFetching(false);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button
+        onClick={() => fetchData()}
+        className={`likeBtn ${liked ? "liked" : ""}`}
+      >
+        {isFetching ? <SpinnerIcon className="icon" /> : <HeartIcon className="icon" />}
+        {liked ? "Liked" : "Like"}
+      </button>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 }
