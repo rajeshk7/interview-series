@@ -59,22 +59,19 @@ function maxVacationDays(flights, days) {
     dp[0][0] = 0; // Starting point, no vacation days at week 0
     
     // Iterate over each week
-    for (let week = 1; week <= numWeeks; ++week) {
+    for (let week = 1; week <= numWeeks; ++week) 
         // Iterate over each city
         for (let city = 0; city < numCities; ++city) {
             // Carry forward the maximum vacation days from the previous week in the same city
             dp[week][city] = dp[week - 1][city];
             // Check all possible flights to the current city
             for (let prevCity = 0; prevCity < numCities; ++prevCity) {
-                if (flights[prevCity][city] === 1) {
+                if (flights[prevCity][city] === 1) 
                     dp[week][city] = Math.max(dp[week][city], dp[week - 1][prevCity]);
-                }
             }
             // Add the vacation days of the current city for the current week
             dp[week][city] += days[city][week - 1];
         }
-    }
-    
     // Find the maximum vacation days possible after the last week
     let maxVacationDays = 0;
     for (let city = 0; city < numCities; ++city) {
