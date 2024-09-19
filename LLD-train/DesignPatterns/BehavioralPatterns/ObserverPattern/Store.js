@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var IphoneObservableImpl_1 = require("./Observable/IphoneObservableImpl");
+var EmailAlertObserverImpl_1 = require("./Observer/EmailAlertObserverImpl");
+var MobileAlertObserverImpl_1 = require("./Observer/MobileAlertObserverImpl");
+var iPhoneObservable = new IphoneObservableImpl_1.default();
+var notificationAlertObserver1 = new EmailAlertObserverImpl_1.default("abc@xyz.com", iPhoneObservable);
+var notificationAlertObserver2 = new MobileAlertObserverImpl_1.default("1234567890", iPhoneObservable);
+var notificationAlertObserver3 = new MobileAlertObserverImpl_1.default("0987654321", iPhoneObservable);
+iPhoneObservable.add(notificationAlertObserver1);
+iPhoneObservable.add(notificationAlertObserver2);
+iPhoneObservable.add(notificationAlertObserver3);
+iPhoneObservable.setStockCount(10);
