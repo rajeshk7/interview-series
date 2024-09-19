@@ -2,7 +2,7 @@ import Invoice from './Models/Invoice';
 import Product from './Models/Product';
 import Payment from './Models/Payment';
 import Notification from './Models/Notification';
-import Color from '../ConsoleColors'
+import Color from '../../../ConsoleColors'
 
 class OrderFacade {
     invoice: Invoice;

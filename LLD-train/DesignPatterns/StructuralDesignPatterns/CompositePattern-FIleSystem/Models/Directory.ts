@@ -1,5 +1,5 @@
 import FileSystem from "./FileSystem";
-import Colors from "../../ConsoleColors";
+import Colors from "../../../../ConsoleColors";
 
 class Directory implements FileSystem {
 

@@ -1,4 +1,4 @@
-import Colors from '../../ConsoleColors';
+import Colors from '../../../../ConsoleColors';
 import FileSystem from './FileSystem';
 
 class File implements FileSystem {
