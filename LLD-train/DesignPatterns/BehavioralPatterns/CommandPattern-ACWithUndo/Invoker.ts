@@ -1,5 +1,5 @@
 import ICommand from "./Interface/ICommand";
-import Color from '../../ConsoleColors'
+import Color from '../../../ConsoleColors'
 
 class RemoteControl {
     currentCommand: ICommand;

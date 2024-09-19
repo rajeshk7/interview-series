@@ -1,4 +1,4 @@
-import Color from '../../ConsoleColors'
+import Color from '../../../ConsoleColors'
 
 class AirConditioner {
     temperature: number;

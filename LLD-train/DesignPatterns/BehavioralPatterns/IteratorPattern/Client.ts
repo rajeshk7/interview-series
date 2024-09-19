@@ -1,10 +1,9 @@
 import Book from "./Library/Book";
-import Color from "../ConsoleColors"
+import Color from "../../../ConsoleColors"
 import Library from "./Library/Library";
 
 import Car from "./Showroom/Car";
 import ShowRoom from "./Showroom/ShowRoom";
-import CarIterator from "./Showroom/CarIterator";
 
 const books: Book[] = [];
 books.push(new Book("Design Patterns", "Gang of Four"));
