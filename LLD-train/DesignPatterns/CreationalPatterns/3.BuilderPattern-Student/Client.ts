@@ -1,7 +1,7 @@
 import Director from "./Director";
 import MBAStudentBuilder from "./MBAStudentBuilder";
 import EngineeringStudentBuilder from "./EngineeringStudentBuilder";
-import Color from '../ConsoleColors'
+import Color from '../../../ConsoleColors'
 import MedicalStudentBuilder from "./MedialStudentBuilder";
 
 const MBADirector = new Director(new MBAStudentBuilder());
