@@ -1,5 +1,5 @@
 import Singal from "./Signal";
-import Color from '../../ConsoleColors';
+import Color from '../../../ConsoleColors';
 
 class TrafficLight {
     private id: string;
