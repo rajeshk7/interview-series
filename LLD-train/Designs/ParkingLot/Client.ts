@@ -1,41 +1,24 @@
-import ParkingSlot from "./ParkingSlot";
-import ParkingSlotType from "./Models/ParkingSlotType";
-import ParkingFloor from "./ParkingFloor";
+import Level from "./Level";
 import ParkingLot from "./ParkingLot";
-import Vehicle from "./Models/Vehicle";
-import VehicleCategory from "./Models/VehicleCategory";
-import Ticket from "./Models/Ticket";
+import Car from "./Models/Car";
+import Motorbike from "./Models/Motorbike";
+import Truck from "./Models/Truck";
 
-const parkingLotName = "ParkingLot";
-const parkingLotAddress = "123, ABC Street, XYZ City";
+const parkingLotInstance = ParkingLot.getInstance()
+parkingLotInstance.addLevel(new Level(1, 10))
+parkingLotInstance.addLevel(new Level(2, 10))
 
-const allSlots = new Map<ParkingSlotType, Map<string, ParkingSlot>>();
-const compactSlot = new Map<string, ParkingSlot>();
-compactSlot.set("1", new ParkingSlot("1", ParkingSlotType.Compact));
-compactSlot.set("2", new ParkingSlot("2", ParkingSlotType.Compact));
-allSlots.set(ParkingSlotType.Compact, compactSlot);
+const car1 = new Car("1234")
+const bike1 = new Motorbike("2345")
+const truck1 = new Truck("3456")
 
-const twoWheelerSlot = new Map<string, ParkingSlot>();
-twoWheelerSlot.set("1", new ParkingSlot("1", ParkingSlotType.TwoWheeler));
-twoWheelerSlot.set("2", new ParkingSlot("2", ParkingSlotType.TwoWheeler));
-allSlots.set(ParkingSlotType.TwoWheeler, twoWheelerSlot);
+parkingLotInstance.parkVehicle(car1)
+parkingLotInstance.parkVehicle(truck1)
+parkingLotInstance.parkVehicle(bike1)
 
-const largeSlot = new Map<string, ParkingSlot>();
-largeSlot.set("1", new ParkingSlot("1", ParkingSlotType.Large));
-largeSlot.set("2", new ParkingSlot("2", ParkingSlotType.Large));
-allSlots.set(ParkingSlotType.Large, largeSlot);
+parkingLotInstance.displayAvailability()
 
-const parkingFloor = new ParkingFloor("1", allSlots);
-const parkingFloors: ParkingFloor[] = [parkingFloor];
-parkingFloors.push(parkingFloor);
+parkingLotInstance.unparkVehicle(car1)
+parkingLotInstance.unparkVehicle(truck1)
 
-const parkingLot = ParkingLot.getInstance(parkingLotName, parkingLotAddress, parkingFloors);
-
-const vehicle = new Vehicle("KA-01-HH-1234", VehicleCategory.Compact);
-
-const ticket: Ticket = parkingLot.assignTicket(vehicle) as Ticket;
-
-setTimeout(() => {
-    console.log("Price " + parkingLot.scanAndPay(ticket));
-}, 1000);
-
+parkingLotInstance.displayAvailability()

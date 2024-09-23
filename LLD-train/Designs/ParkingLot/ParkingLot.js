@@ -1,69 +1,41 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Ticket_1 = __importDefault(require("./Models/Ticket"));
-const ParkingFloor_1 = __importDefault(require("./ParkingFloor"));
-const CalculateParkingFee_1 = __importDefault(require("./Models/CalculateParkingFee"));
-class ParkingLot {
-    constructor(nameOfParkingLot, address, parkingFloors) {
-        this.nameOfParkingLot = nameOfParkingLot;
-        this.address = address;
-        this.parkingFloors = parkingFloors;
+var ParkingLot = /** @class */ (function () {
+    function ParkingLot() {
+        this.levels = new Array();
     }
-    static getInstance(nameOfParkingLot, address, parkingFloors) {
-        if (!ParkingLot.parkingLotInstance) {
-            ParkingLot.parkingLotInstance = new ParkingLot(nameOfParkingLot, address, parkingFloors);
+    // It should be synchronized in Java
+    ParkingLot.getInstance = function () {
+        if (this.instance == null) {
+            this.instance = new ParkingLot();
         }
-        return ParkingLot.parkingLotInstance;
-    }
-    addFloors(name, parkSlots) {
-        const parkingFloor = new ParkingFloor_1.default(name, parkSlots);
-        this.parkingFloors.push(parkingFloor);
-    }
-    removeFloors(parkingFloor) {
-        const index = this.parkingFloors.indexOf(parkingFloor);
-        if (index > -1) {
-            this.parkingFloors.splice(index, 1);
+        return this.instance;
+    };
+    ParkingLot.prototype.addLevel = function (level) {
+        this.levels.push(level);
+    };
+    ParkingLot.prototype.parkVehicle = function (vehicle) {
+        for (var _i = 0, _a = this.levels; _i < _a.length; _i++) {
+            var level = _a[_i];
+            if (level.parkVehicle(vehicle))
+                return true;
         }
-        else {
-            console.error("Parking floor not found");
+        return false;
+    };
+    ParkingLot.prototype.unparkVehicle = function (vehicle) {
+        for (var _i = 0, _a = this.levels; _i < _a.length; _i++) {
+            var level = _a[_i];
+            if (level.unparkVehicle(vehicle))
+                return true;
         }
-    }
-    assignTicket(vehicle) {
-        const parkingSlot = this.getParkingSlotForVehicleAndPark(vehicle);
-        if (!parkingSlot) {
-            console.log("No parking slot available");
-            return undefined;
+        return false;
+    };
+    ParkingLot.prototype.displayAvailability = function () {
+        for (var _i = 0, _a = this.levels; _i < _a.length; _i++) {
+            var level = _a[_i];
+            level.displayAvailability();
         }
-        const ticket = new Ticket_1.default(vehicle, parkingSlot);
-        console.log("Ticket assigned: ", ticket);
-        return ticket;
-    }
-    scanAndPay(ticket) {
-        ticket.endTime = new Date();
-        const timeDiff = ticket.endTime.getTime() - ticket.startTime.getTime();
-        const hours = Math.ceil(timeDiff / (1000 * 3600));
-        console.log("Total hours parked: ", hours);
-        const slotType = ticket.parkingSlot.parkingSlotType;
-        const amount = (0, CalculateParkingFee_1.default)(slotType, hours);
-        console.log("Total amount to be paid: ", amount);
-        return amount;
-    }
-    createTicketForSlot(vehicle, parkingSlot) {
-        const ticket = new Ticket_1.default(vehicle, parkingSlot);
-        console.log("Ticket assigned: ", ticket);
-        return ticket;
-    }
-    getParkingSlotForVehicleAndPark(vehicle) {
-        for (const parkingFloor of this.parkingFloors) {
-            const parkingSlot = parkingFloor.getRelevantSlotForVehicleAndPark(vehicle);
-            if (parkingSlot) {
-                return parkingSlot;
-            }
-        }
-        return undefined;
-    }
-}
+    };
+    return ParkingLot;
+}());
 exports.default = ParkingLot;
