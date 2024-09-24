@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const CoffeeMachine_1 = __importDefault(require("./CoffeeMachine"));
+const Payment_1 = __importDefault(require("./Payment"));
+const coffeeMachine = CoffeeMachine_1.default.getInstance();
+coffeeMachine.displayMenu();
+console.log('\n ------------- Selecting product Espresso\n');
+const espresso = coffeeMachine.selectCoffee("Espresso");
+coffeeMachine.dispenseCoffee(espresso, new Payment_1.default(50));
+console.log('\n ------------- Selecting product Americano\n');
+const americano = coffeeMachine.selectCoffee("Americano");
+coffeeMachine.dispenseCoffee(americano, new Payment_1.default(160));
+console.log('\n ------------- Selecting product Latte\n');
+const latte = coffeeMachine.selectCoffee("Latte");
+coffeeMachine.dispenseCoffee(latte, new Payment_1.default(70));
+console.log('\n ------------- Selecting product Cappuccino\n');
+const cappuccino = coffeeMachine.selectCoffee("Cappuccino");
+coffeeMachine.dispenseCoffee(cappuccino, new Payment_1.default(180));
