@@ -60,8 +60,6 @@ class CoffeeMachine {
         cappuccinoIngredients.set(this.ingredients.get("water"), 2);
         cappuccinoIngredients.set(this.ingredients.get("sugar"), 1);
         this.coffeeMenu.push(new Coffee("Cappuccino", cappuccinoIngredients, 80));
-        for (const coffee of this.coffeeMenu)
-            console.log("Alpha " + Array.from(coffee.ingredients));
     }
     displayMenu() {
         console.log("\u001B[96m" /* Color.fgBrightCyan */ + "Menu" + "\u001B[0m" /* Color.reset */);
